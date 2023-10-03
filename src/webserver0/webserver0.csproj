@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Protobuf Include="Products\product.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.57.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.58.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.11" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.6.0" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.6.0" />

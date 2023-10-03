@@ -1,6 +1,7 @@
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using webserver0.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,12 @@ builder.Services.AddOpenTelemetry()
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
         .AddOtlpExporter());
+
+builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddGrpcClient<ProductGrpc.ProductGrpcClient>(o =>
+    o.Address = new Uri("https://localhost:19001")
+);
 
 var app = builder.Build();
 
